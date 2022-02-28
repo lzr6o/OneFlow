@@ -1,0 +1,50 @@
+{
+  "projectId":1,
+  "projectName":"projectA",
+  "datasources":[
+    {
+      "url":"sss",
+      "userName":"sss",
+      "password":"ssss",
+      "driver":"ssss",
+      "name":"source"
+    },
+    {
+      "url":"qqqq",
+      "userName":"qqq",
+      "password":"qqq",
+      "driver":"qqqq",
+      "name":"dest"
+    }
+  ],
+  "tasks":[
+    {
+      "taskId":1,
+      "taskName":"task1",
+      "cron":"0 0 0 ** ?",
+      "steps":[
+        {
+          "order":1,
+          "stepName":"step1",
+          "type":"hive",
+          "hivaParam": {
+            "var1": "2013"
+          },
+          "path":"/dev/shm/test3.hql"
+        },
+        {
+          "order":2,
+          "stepName":"step2",
+          "type":"spark",
+          "path":"/dev/shm/SparkExample-1.0-SNAPSHOT.jar",
+          "master": "local[*]",
+          "deployMode": "client",
+          "class": "com.mez.text.SparkHiveExample"
+        }
+      ]
+    }
+    {
+      "taskId": 2,
+    }
+  ]
+}
