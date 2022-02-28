@@ -1,16 +1,18 @@
 package com.oc.oneflow.model;
 
-public class ConfigVO {
-    private String projectId;
-    private String projectName;
-    private DataSource dataSource;
-    private TaskVO tasks;
+import java.util.List;
 
-    public String getProjectId() {
+public class ConfigVO {
+    private Integer projectId;
+    private String projectName;
+    private List<DataSource> dataSource;
+    private List<TaskVO> tasks;
+
+    public Integer getProjectId() {
         return projectId;
     }
 
-    public void setProjectId(String projectId) {
+    public void setProjectId(Integer projectId) {
         this.projectId = projectId;
     }
 
@@ -22,20 +24,20 @@ public class ConfigVO {
         this.projectName = projectName;
     }
 
-    public DataSource getDataSource() {
+    public List<DataSource> getDataSource() {
         return dataSource;
     }
 
-    public void setDataSource(DataSource dataSource) {
+    public void setDataSource(List<DataSource> dataSource) {
         this.dataSource = dataSource;
     }
 
-    public TaskVO getTaskVO() {
+    public List<TaskVO> getTasks() {
         return tasks;
     }
 
-    public void setTaskVO(TaskVO taskVO) {
-        this.tasks = taskVO;
+    public void setTasks(List<TaskVO> tasks) {
+        this.tasks = tasks;
     }
 
     class DataSource {

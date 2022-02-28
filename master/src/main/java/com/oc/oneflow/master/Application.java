@@ -1,6 +1,8 @@
 package com.oc.oneflow.master;
 
 import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
+import com.oc.oneflow.model.ConfigVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,6 +10,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.annotation.PostConstruct;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 
 @SpringBootApplication
 public class Application {
@@ -21,8 +25,11 @@ public class Application {
     }
 
     @PostConstruct
-    public void run() {
+    public void run() throws FileNotFoundException {
         Gson gson = new Gson();
-        ConfigVO configVO = gson.fromJson(jsonConfigPath, ConfigVO.class);
+        JsonReader reader = new JsonReader(new FileReader(jsonConfigPath));
+        ConfigVO configVO = gson.fromJson(reader, ConfigVO.class);
+        System.out.println(configVO.getProjectId());
+        System.out.println(configVO.getProjectName());
     }
 }
