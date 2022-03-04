@@ -12,7 +12,7 @@
         <module>model</module>
         <module>common</module>
         <module>master</module>
-        <module>executer</module>
+        <module>executor</module>
     </modules>
 
     <properties>
