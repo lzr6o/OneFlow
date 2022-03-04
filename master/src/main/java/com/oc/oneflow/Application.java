@@ -1,4 +1,4 @@
-package com.oc.oneflow.master;
+package com.oc.oneflow;
 
 import com.oc.oneflow.common.utils.ConfigUtil;
 import com.oc.oneflow.model.ConfigVO;
