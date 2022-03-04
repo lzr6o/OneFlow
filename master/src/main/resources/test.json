@@ -1,6 +1,31 @@
 {
   "projectId":1,
   "projectName":"projectA",
-  "datasources":[],
-  "tasks":[]
+  "datasources":[
+    {
+      "url":"sss",
+      "userName":"sss",
+      "password":"ssss",
+      "driver":"ssss",
+      "name":"source"
+    }
+  ],
+  "tasks":[
+    {
+      "taskId": 1,
+      "taskName": "task1",
+      "cron": "0 0 0 ** ?",
+      "steps": [
+        {
+          "order": 1,
+          "stepName": "step1",
+          "type": "hive",
+          "hiveParam": {
+            "var1": "2013"
+          },
+          "path": "/dev/shm/test3.hql"
+        }
+      ]
+    }
+  ]
 }

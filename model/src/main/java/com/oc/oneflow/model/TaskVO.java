@@ -1,10 +1,12 @@
 package com.oc.oneflow.model;
 
+import java.util.List;
+
 public class TaskVO {
     private String taskId;
     private String taskName;
     private String cron;
-    private StepVO steps;
+    private List<StepVO> steps;
 
     public String getTaskId() {
         return taskId;
@@ -30,11 +32,11 @@ public class TaskVO {
         this.cron = cron;
     }
 
-    public StepVO getSteps() {
+    public List<StepVO> getSteps() {
         return steps;
     }
 
-    public void setSteps(StepVO steps) {
+    public void setSteps(List<StepVO> steps) {
         this.steps = steps;
     }
 }

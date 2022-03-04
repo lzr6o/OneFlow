@@ -2,6 +2,8 @@ package com.oc.oneflow;
 
 import com.oc.oneflow.common.utils.ConfigUtil;
 import com.oc.oneflow.model.ConfigVO;
+import com.oc.oneflow.model.StepVO;
+import com.oc.oneflow.model.TaskVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.annotation.PostConstruct;
 import java.io.FileNotFoundException;
+import java.util.List;
 
 @SpringBootApplication
 public class Application {
@@ -26,7 +29,12 @@ public class Application {
     @PostConstruct
     public void run() throws FileNotFoundException {
         ConfigVO configVO = configUtil.getConfigVO();
-        System.out.println(configVO.getProjectId());
-        System.out.println(configVO.getProjectName());
+        List<TaskVO> taskVOList = configVO.getTasks();
+        for (TaskVO taskVO : taskVOList) {
+            List<StepVO> stepVOList = taskVO.getSteps();
+            for (StepVO stepVO : stepVOList) {
+                stepVO.getType();
+            }
+        }
     }
 }
