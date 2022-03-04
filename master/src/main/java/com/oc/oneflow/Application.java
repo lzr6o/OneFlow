@@ -2,13 +2,12 @@ package com.oc.oneflow;
 
 import com.oc.oneflow.common.utils.ConfigUtil;
 import com.oc.oneflow.model.ConfigVO;
-import com.oc.oneflow.model.StepVO;
-import com.oc.oneflow.model.TaskVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.annotation.PostConstruct;
 import java.io.FileNotFoundException;
@@ -16,11 +15,11 @@ import java.util.List;
 
 @SpringBootApplication
 public class Application {
-
+    private static final Logger appLogger = LoggerFactory.getLogger(Application.class);
+    @Autowired
+    private JdbcTemplate hiveJdbcTemplate;
     @Autowired
     private ConfigUtil configUtil;
-
-    private static final Logger appLogger = LoggerFactory.getLogger(Application.class);
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -28,13 +27,26 @@ public class Application {
 
     @PostConstruct
     public void run() throws FileNotFoundException {
+        appLogger.info("OneFlow begin to run");
         ConfigVO configVO = configUtil.getConfigVO();
-        List<TaskVO> taskVOList = configVO.getTasks();
-        for (TaskVO taskVO : taskVOList) {
-            List<StepVO> stepVOList = taskVO.getSteps();
-            for (StepVO stepVO : stepVOList) {
-                stepVO.getType();
-            }
-        }
+        appLogger.info("Get ConfigVO");
+        List<ConfigVO.DataSource> dataSources = configVO.getDataSources();
+        appLogger.info("Get Data Source Config");
+        configVO.getTasks().forEach(taskVO -> {
+            String taskId = taskVO.getTaskId();
+            String taskName = taskVO.getTaskName();
+            String cron = taskVO.getCron();
+            appLogger.info("Get task " + taskId + "'s Config");
+            taskVO.getSteps().forEach(stepVO -> {
+                appLogger.info("Get step" + stepVO.getOrder() + "'s Config");
+                String type = stepVO.getType();
+                if (type.equals("hive")) {
+                    appLogger.info("Run hive");
+                    appLogger.info("select * from employee");
+                    hiveJdbcTemplate.execute("select * from employee");
+                    appLogger.info("done");
+                }
+            });
+        });
     }
 }

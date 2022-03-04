@@ -5,7 +5,7 @@ import java.util.List;
 public class ConfigVO {
     private Integer projectId;
     private String projectName;
-    private List<DataSource> dataSource;
+    private List<DataSource> dataSources;
     private List<TaskVO> tasks;
 
     public Integer getProjectId() {
@@ -24,12 +24,12 @@ public class ConfigVO {
         this.projectName = projectName;
     }
 
-    public List<DataSource> getDataSource() {
-        return dataSource;
+    public List<DataSource> getDataSources() {
+        return dataSources;
     }
 
-    public void setDataSource(List<DataSource> dataSource) {
-        this.dataSource = dataSource;
+    public void setDataSources(List<DataSource> dataSources) {
+        this.dataSources = dataSources;
     }
 
     public List<TaskVO> getTasks() {
@@ -40,11 +40,51 @@ public class ConfigVO {
         this.tasks = tasks;
     }
 
-    class DataSource {
+    public class DataSource {
         private String url;
         private String userName;
         private String password;
         private String driver;
         private String name;
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
+
+        public String getUserName() {
+            return userName;
+        }
+
+        public void setUserName(String userName) {
+            this.userName = userName;
+        }
+
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
+
+        public String getDriver() {
+            return driver;
+        }
+
+        public void setDriver(String driver) {
+            this.driver = driver;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
     }
 }

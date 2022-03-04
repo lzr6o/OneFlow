@@ -1,6 +1,27 @@
 {
-  "projectId":1,
-  "projectName":"projectA",
-  "datasources":[],
-  "tasks":[]
+  "projectId": 1,
+  "projectName": "projectA",
+  "dataSources": [
+    {
+      "name": "hive"
+    }
+  ],
+  "tasks": [
+    {
+      "taskId": 1,
+      "taskName": "task1",
+      "cron": "0 0 0 ** ?",
+      "steps": [
+        {
+          "order": 1,
+          "stepName": "step1",
+          "type": "hive",
+          "hiveParam": {
+            "var1": "2013"
+          },
+          "path": "/dev/shm/test3.hql"
+        }
+      ]
+    }
+  ]
 }

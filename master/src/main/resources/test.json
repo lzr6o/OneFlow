@@ -1,16 +1,12 @@
 {
-  "projectId":1,
-  "projectName":"projectA",
-  "datasources":[
+  "projectId": 1,
+  "projectName": "projectA",
+  "dataSources": [
     {
-      "url":"sss",
-      "userName":"sss",
-      "password":"ssss",
-      "driver":"ssss",
-      "name":"source"
+      "name": "hive"
     }
   ],
-  "tasks":[
+  "tasks": [
     {
       "taskId": 1,
       "taskName": "task1",
