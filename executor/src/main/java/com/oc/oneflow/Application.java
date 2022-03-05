@@ -42,7 +42,7 @@ public class Application {
                 String type = stepVO.getType();
                 if (type.equals("hive")) {
                     appLogger.info("Run hive");
-                    hiveService.execute("select * from test.employee");
+                    hiveService.runHql(stepVO.getPath(), stepVO.getHiveParam());
                 }
             });
         });
