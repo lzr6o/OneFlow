@@ -5,33 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3649afb3-f941-4377-bda3-10e3a6884c72" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/executor/src/main/java/com/oc/oneflow/executor/config/SchedulerConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/src/main/java/com/oc/oneflow/model/scheduler/JobDescriptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/oc/oneflow/common/utils/ConfigUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/oc/oneflow/common/utils/ConfigUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/executor/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/executor/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/executor/src/main/java/com/oc/oneflow/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/executor/src/main/java/com/oc/oneflow/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/executor/target/classes/com/oc/oneflow/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/executor/target/classes/com/oc/oneflow/Application.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/executor/target/classes/com/oc/oneflow/executor/config/HiveConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/executor/target/classes/com/oc/oneflow/executor/config/HiveConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/executor/target/classes/com/oc/oneflow/executor/service/HiveService.class" beforeDir="false" afterPath="$PROJECT_DIR$/executor/target/classes/com/oc/oneflow/executor/service/HiveService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/executor/target/classes/com/oc/oneflow/executor/service/impl/HiveServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/executor/target/classes/com/oc/oneflow/executor/service/impl/HiveServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/model/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/src/main/java/com/oc/oneflow/model/ConfigVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/main/java/com/oc/oneflow/model/vo/ConfigVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/src/main/java/com/oc/oneflow/model/StepVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/main/java/com/oc/oneflow/model/vo/StepVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/src/main/java/com/oc/oneflow/model/TaskVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/main/java/com/oc/oneflow/model/vo/TaskVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/target/classes/com/oc/oneflow/model/ConfigVO$DataSource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/target/classes/com/oc/oneflow/model/ConfigVO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/target/classes/com/oc/oneflow/model/StepVO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/target/classes/com/oc/oneflow/model/TaskVO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/model/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/model/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/target/model-2.6.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/model/target/model-2.6.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/src/main/java/com/oc/oneflow/model/scheduler/JobDescriptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/main/java/com/oc/oneflow/model/scheduler/JobDescriptor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +43,7 @@
     <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="25u1HoaECvIeFfXAjjVu4PZi5GC" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -132,6 +108,7 @@
       <workItem from="1646545001913" duration="1260000" />
       <workItem from="1646546758261" duration="968000" />
       <workItem from="1646547742727" duration="7767000" />
+      <workItem from="1646605321181" duration="675000" />
     </task>
     <servers />
   </component>

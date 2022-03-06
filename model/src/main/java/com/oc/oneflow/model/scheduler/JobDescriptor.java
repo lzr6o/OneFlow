@@ -1,7 +1,13 @@
 package com.oc.oneflow.model.scheduler;
 
+import org.quartz.Job;
+import org.quartz.JobDataMap;
+import org.quartz.JobDetail;
+
 import java.util.HashMap;
 import java.util.Map;
+
+import static org.quartz.JobBuilder.newJob;
 
 public class JobDescriptor {
     private String name;
@@ -40,5 +46,21 @@ public class JobDescriptor {
 
     public void setDurable(boolean durable) {
         this.durable = durable;
+    }
+
+    public Class<? extends Job> getJobClazz() {
+        return jobClazz;
+    }
+
+    public void setJobClazz(Class<? extends Job> jobClazz) {
+        this.jobClazz = jobClazz;
+    }
+
+    public JobDetail buildJobDetail() {
+        JobDataMap jobDataMap = new JobDataMap(getDataMap());
+        return newJob(jobClazz)
+                .withIdentity(getName(), getGroup())
+                .usingJobData(jobDataMap)
+                .storeDurably(isDurable());
     }
 }
