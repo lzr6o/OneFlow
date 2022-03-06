@@ -2,7 +2,8 @@ package com.oc.oneflow;
 
 import com.oc.oneflow.common.utils.ConfigUtil;
 import com.oc.oneflow.executor.service.HiveService;
-import com.oc.oneflow.model.ConfigVO;
+import com.oc.oneflow.model.vo.ConfigVO;
+import org.quartz.Scheduler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,8 @@ public class Application {
     private ConfigUtil configUtil;
     @Autowired
     private HiveService hiveService;
+    @Autowired
+    private Scheduler scheduler;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -36,6 +39,8 @@ public class Application {
             String taskId = taskVO.getTaskId();
             String taskName = taskVO.getTaskName();
             String cron = taskVO.getCron();
+
+            scheduler.scheduleJob();
             appLogger.info("Get task " + taskId + "'s Config");
             taskVO.getSteps().forEach(stepVO -> {
                 appLogger.info("Get step" + stepVO.getOrder() + "'s Config");

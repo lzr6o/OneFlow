@@ -1,0 +1,5 @@
+com/oc/oneflow/executor/config/HiveConfig.class
+com/oc/oneflow/executor/config/SchedulerConfiguration.class
+com/oc/oneflow/executor/service/impl/HiveServiceImpl.class
+com/oc/oneflow/Application.class
+com/oc/oneflow/executor/service/HiveService.class

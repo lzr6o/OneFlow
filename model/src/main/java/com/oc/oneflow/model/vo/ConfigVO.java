@@ -1,4 +1,4 @@
-package com.oc.oneflow.model;
+package com.oc.oneflow.model.vo;
 
 import java.util.List;
 

@@ -1,3 +1,4 @@
-/Users/zr6oli/Desktop/OneFlow/model/src/main/java/com/oc/oneflow/model/TaskVO.java
-/Users/zr6oli/Desktop/OneFlow/model/src/main/java/com/oc/oneflow/model/ConfigVO.java
-/Users/zr6oli/Desktop/OneFlow/model/src/main/java/com/oc/oneflow/model/StepVO.java
+/Users/zr6oli/Desktop/OneFlow/model/src/main/java/com/oc/oneflow/model/vo/StepVO.java
+/Users/zr6oli/Desktop/OneFlow/model/src/main/java/com/oc/oneflow/model/vo/ConfigVO.java
+/Users/zr6oli/Desktop/OneFlow/model/src/main/java/com/oc/oneflow/model/scheduler/JobDescriptor.java
+/Users/zr6oli/Desktop/OneFlow/model/src/main/java/com/oc/oneflow/model/vo/TaskVO.java

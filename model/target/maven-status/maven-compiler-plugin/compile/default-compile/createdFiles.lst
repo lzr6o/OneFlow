@@ -1,4 +1,5 @@
-com/oc/oneflow/model/TaskVO.class
-com/oc/oneflow/model/ConfigVO$DataSource.class
-com/oc/oneflow/model/StepVO.class
-com/oc/oneflow/model/ConfigVO.class
+com/oc/oneflow/model/vo/StepVO.class
+com/oc/oneflow/model/vo/ConfigVO.class
+com/oc/oneflow/model/vo/TaskVO.class
+com/oc/oneflow/model/vo/ConfigVO$DataSource.class
+com/oc/oneflow/model/scheduler/JobDescriptor.class
