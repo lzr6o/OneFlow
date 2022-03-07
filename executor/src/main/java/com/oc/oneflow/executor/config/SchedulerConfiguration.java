@@ -4,6 +4,7 @@ import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
 import org.quartz.spi.TriggerFiredBundle;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +17,7 @@ public class SchedulerConfiguration {
     @Bean
     public SchedulerFactoryBean schedulerFactory(ApplicationContext applicationContext) {
         SchedulerFactoryBean schedulerFactoryBean = new SchedulerFactoryBean();
-        schedulerFactoryBean.setJobFactory(new AutowireCapableBeanJobFactory(applicationContext));
+        schedulerFactoryBean.setJobFactory(new AutowireCapableBeanJobFactory((AutowireCapableBeanFactory) applicationContext));
         return schedulerFactoryBean;
     }
 
@@ -28,10 +29,10 @@ public class SchedulerConfiguration {
     }
 
     public class AutowireCapableBeanJobFactory extends SpringBeanJobFactory {
-        private final AutowireCapableBeanJobFactory beanFactory;
+        private final AutowireCapableBeanFactory beanFactory;
 
         @Autowired
-        public AutowireCapableBeanJobFactory(AutowireCapableBeanJobFactory beanJobFactory) {
+        public AutowireCapableBeanJobFactory(AutowireCapableBeanFactory beanJobFactory) {
             Assert.notNull(beanJobFactory, "Bean factory must not be null");
             this.beanFactory = beanJobFactory;
         }

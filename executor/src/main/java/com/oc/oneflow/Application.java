@@ -48,8 +48,7 @@ public class Application {
             paramMap.put("taskId", taskId);
             paramMap.put("cron", cron);
             jobDescriptor.setDataMap(paramMap);
-            OrderListener orderListener = new OrderListener();
-
+            OrderListener orderListener = new OrderListener(taskName + "OrderListener");
             appLogger.info("Get task " + taskId + "'s Config");
             taskVO.getSteps().sort(new Comparator<StepVO>() {
                 @Override
@@ -85,7 +84,7 @@ public class Application {
                 scheduler.getListenerManager().addJobListener(orderListener);
                 if (!jobDetailQueue.isEmpty()) {
                     JobDetail initJobDetail = jobDetailQueue.poll();
-                    scheduler.addJob(initJobDetail, true);
+//                    scheduler.addJob(initJobDetail, true);
                     scheduler.scheduleJob(initJobDetail, jobTrigger);
                 } else {
                     appLogger.warn(taskName + "'s Step List is empty");

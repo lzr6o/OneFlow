@@ -3,27 +3,17 @@ package com.oc.oneflow.executor.listener;
 import org.quartz.JobDetail;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
-import org.quartz.JobListener;
+import org.quartz.listeners.JobChainingJobListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class OrderListener implements JobListener {
+public class OrderListener extends JobChainingJobListener {
     private static final Logger appLogger = LoggerFactory.getLogger(OrderListener.class);
 
-    @Override
-    public String getName() {
-        return null;
+    public OrderListener(String name) {
+        super(name);
     }
 
-    @Override
-    public void jobToBeExecuted(JobExecutionContext jobExecutionContext) {
-
-    }
-
-    @Override
-    public void jobExecutionVetoed(JobExecutionContext jobExecutionContext) {
-
-    }
 
     @Override
     public void jobWasExecuted(JobExecutionContext jobExecutionContext, JobExecutionException e) {
