@@ -42,7 +42,6 @@ public class Application {
             String taskName = taskVO.getTaskName();
             String cron = taskVO.getCron();
             JobDescriptor jobDescriptor = new JobDescriptor();
-            jobDescriptor.setName(taskName);
             jobDescriptor.setGroup(taskName);
             Map<String, Object> paramMap = new HashMap<>();
             paramMap.put("taskName", taskName);
@@ -55,6 +54,7 @@ public class Application {
             taskVO.getSteps().forEach(stepVO -> {
                 appLogger.info("Get step" + stepVO.getOrder() + "'s Config");
                 String type = stepVO.getType();
+                jobDescriptor.setName(stepVO.getStepName());
                 if (type.equals("hive")) {
                     jobDescriptor.setJobClazz(HiveJob.class);
                     paramMap.put("path", stepVO.getPath());
