@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3649afb3-f941-4377-bda3-10e3a6884c72" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/executor/src/main/java/com/oc/oneflow/executor/job/HiveJob.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/executor/src/main/java/com/oc/oneflow/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/executor/src/main/java/com/oc/oneflow/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/src/main/resources/test.json" beforeDir="false" afterPath="$PROJECT_DIR$/master/src/main/resources/test.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/src/main/java/com/oc/oneflow/model/scheduler/JobDescriptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/main/java/com/oc/oneflow/model/scheduler/JobDescriptor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -108,7 +111,7 @@
       <workItem from="1646545001913" duration="1260000" />
       <workItem from="1646546758261" duration="968000" />
       <workItem from="1646547742727" duration="7767000" />
-      <workItem from="1646605321181" duration="675000" />
+      <workItem from="1646605321181" duration="5387000" />
     </task>
     <servers />
   </component>

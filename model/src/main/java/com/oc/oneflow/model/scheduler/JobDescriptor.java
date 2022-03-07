@@ -61,6 +61,7 @@ public class JobDescriptor {
         return newJob(jobClazz)
                 .withIdentity(getName(), getGroup())
                 .usingJobData(jobDataMap)
-                .storeDurably(isDurable());
+                .storeDurably(isDurable())
+                .build();
     }
 }

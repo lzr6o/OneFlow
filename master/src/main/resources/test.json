@@ -20,6 +20,15 @@
             "var1": "2013"
           },
           "path": "/dev/shm/test3.hql"
+        },
+        {
+          "order": 2,
+          "stepName": "step2",
+          "type": "hive",
+          "hiveParam": {
+            "var1": "2012"
+          },
+          "path": "/dev/shm/test3.hql"
         }
       ]
     }
