@@ -19,7 +19,7 @@
           "hiveParam": {
             "var1": "2013"
           },
-          "path": "/dev/shm/test3.hql"
+          "path": "/dev/shm/test.hql"
         },
         {
           "order": 1,
@@ -28,7 +28,7 @@
           "hiveParam": {
             "var1": "2012"
           },
-          "path": "/dev/shm/test3.hql"
+          "path": "/dev/shm/test.hql"
         },
         {
           "order": 2,
@@ -37,7 +37,7 @@
           "hiveParam": {
             "var1": "2012"
           },
-          "path": "/dev/shm/test3.hql"
+          "path": "/dev/shm/test.hql"
         },
         {
           "order": 3,
@@ -46,7 +46,7 @@
           "hiveParam": {
             "var1": "2012"
           },
-          "path": "/dev/shm/test3.hql"
+          "path": "/dev/shm/test.hql"
         },
         {
           "order": 3,
@@ -55,7 +55,7 @@
           "hiveParam": {
             "var1": "2012"
           },
-          "path": "/dev/shm/test3.hql"
+          "path": "/dev/shm/test.hql"
         }
       ]
     }

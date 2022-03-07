@@ -7,6 +7,15 @@ public class TaskVO {
     private String taskName;
     private String cron;
     private List<StepVO> steps;
+    private String group;
+
+    public String getGroup() {
+        return group;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
+    }
 
     public String getTaskId() {
         return taskId;
