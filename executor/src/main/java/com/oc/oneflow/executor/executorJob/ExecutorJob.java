@@ -59,6 +59,7 @@ public class ExecutorJob implements Job {
 //                    paramMap.put("mainClass", stepVO.getPath());
 //                    paramMap.put("jarPath", stepVO.getHiveParam());
             }
+            jobDescriptor.setDataMap(paramMap);
             JobDetail jobDetail = jobDescriptor.buildJobDetail();
             jobDetailQueue.add(jobDetail);
         });
@@ -79,6 +80,7 @@ public class ExecutorJob implements Job {
                 runningJobList.add(stepName);
                 statusMap.put(stepName, "processing");
                 appLogger.info(stepName + " is running");
+                scheduler.addJob(initJobDetail, true);
                 scheduler.triggerJob(initJobDetail.getKey());
             }
         } catch (
