@@ -1,6 +1,7 @@
 package com.oc.oneflow.executor.job;
 
 import com.oc.oneflow.Application;
+import org.apache.spark.launcher.SparkAppHandle;
 import org.apache.spark.launcher.SparkLauncher;
 import org.quartz.Job;
 import org.quartz.JobDataMap;
@@ -10,19 +11,32 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 
+import java.io.File;
 import java.util.List;
 
 public class SparkJob implements Job {
     private static final Logger appLogger = LoggerFactory.getLogger(Application.class);
 
+    // echo 'sc.getConf.get("spark.home")' | spark-shell
     @Value("${sparkHome}")
     private String sparkHome;
+    private SparkAppHandle handler;
 
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
+        long startTime = System.currentTimeMillis();
+
         JobDataMap map = context.getMergedJobDataMap();
         appLogger.info("Begin to run " + map.getString("taskName") + " " + map.getString("stepName"));
         try {
+            Boolean isSubmitLogDisplay = false;
+            Boolean isRunningLogDisplay = false;
+            Boolean isFailedLogDisplay = false;
+            Boolean isUnknownLogDisplay = false;
+            Boolean isKilledLogDisplay = false;
+            Boolean isConnectedLogDisplay = false;
+            Boolean isLostLogDisplay = false;
+
             SparkLauncher sparkLauncher = new SparkLauncher()
                     .setAppResource(map.getString("path"))
                     .setMainClass(map.getString("className"))
@@ -76,12 +90,45 @@ public class SparkJob implements Job {
                     }
                 }
             }
+            handler = sparkLauncher.redirectOutput(new File(map.getString("sparkLogPath") + "/Task_" + startTime + ".log")).startApplication();
             appLogger.info("Task start, run main class: " + map.getString("className"));
 
+            while (handler.getState() != null && !handler.getState().isFinal()) {
+                if (handler.getState().equals(SparkAppHandle.State.SUBMITTED) && !isSubmitLogDisplay) {
+                    appLogger.info("Task " + startTime + " is SUBMITTED Application Id is " + handler.getAppId());
+                    isSubmitLogDisplay = true;
+                } else if (handler.getState().equals(SparkAppHandle.State.RUNNING) && !isRunningLogDisplay) {
+                    appLogger.info("Task " + startTime + " is RUNNING Application Id is " + handler.getAppId());
+                    isRunningLogDisplay = true;
+                } else if (handler.getState().equals(SparkAppHandle.State.FAILED) && !isFailedLogDisplay) {
+                    appLogger.info("Task " + startTime + " is FAILED Application Id is " + handler.getAppId());
+                    isFailedLogDisplay = true;
+                } else if (handler.getState().equals(SparkAppHandle.State.KILLED) && !isKilledLogDisplay) {
+                    appLogger.info("Task " + startTime + " is KILLED Application Id is " + handler.getAppId());
+                    isKilledLogDisplay = true;
+                } else if (handler.getState().equals(SparkAppHandle.State.UNKNOWN) && !isUnknownLogDisplay) {
+                    appLogger.info("Task " + startTime + " is UNKNOWN Application Id is " + handler.getAppId());
+                    isUnknownLogDisplay = true;
+                } else if (handler.getState().equals(SparkAppHandle.State.CONNECTED) && !isConnectedLogDisplay) {
+                    appLogger.info("Task " + startTime + " is CONNECTED Application Id is " + handler.getAppId());
+                    isConnectedLogDisplay = true;
+                } else if (handler.getState().equals(SparkAppHandle.State.LOST) && !isLostLogDisplay) {
+                    appLogger.info("Task " + startTime + " is LOST Application Id is " + handler.getAppId());
+                    isLostLogDisplay = true;
+                }
+            }
+            if (handler.getState().equals(SparkAppHandle.State.KILLED)) {
+                appLogger.info("Task " + startTime + " is KILLED Application Id is " + handler.getAppId());
+            }
+            if (handler.getState().equals(SparkAppHandle.State.FAILED)) {
+                appLogger.info("Task " + startTime + " is FAILED Application Id is " + handler.getAppId());
+            }
             appLogger.info("Task is done");
         } catch (Exception e) {
             appLogger.error("Execute Script Error: ", e);
         } finally {
+            long endTime = System.currentTimeMillis();
+
             appLogger.info("Finish run " + map.getString("taskName") + " " + map.getString("stepName"));
         }
     }

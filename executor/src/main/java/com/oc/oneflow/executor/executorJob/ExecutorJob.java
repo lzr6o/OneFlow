@@ -67,7 +67,7 @@ public class ExecutorJob implements Job {
                 paramMap.put("master", stepVO.getMaster());
                 paramMap.put("deployMode", stepVO.getDeployMode());
                 paramMap.put("className", stepVO.getClassName());
-//                paramMap.put("sparkLogPath", stepVO.getSparkLogPath());
+                paramMap.put("sparkLogPath", stepVO.getSparkLogPath());
             }
             jobDescriptor.setDataMap(paramMap);
             JobDetail jobDetail = jobDescriptor.buildJobDetail();
