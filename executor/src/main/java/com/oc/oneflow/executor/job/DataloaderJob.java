@@ -1,5 +1,6 @@
 package com.oc.oneflow.executor.job;
 
+import com.oc.oneflow.executor.handler.DataTransferHandler;
 import org.quartz.Job;
 import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;
@@ -8,10 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class DataloaderJob implements Job {
     private static final Logger appLogger = LoggerFactory.getLogger(DataloaderJob.class);
@@ -39,24 +38,9 @@ public class DataloaderJob implements Job {
                  * 2  Paul  5
                  * */
                 appLogger.info("select * from " + sourceTable);
-                List<Map<String, Object>> res = sourceJtm.queryForList("select * from " + sourceTable);
-                if (res.isEmpty()) {
-                    appLogger.info("No data found in table " + sourceTable);
-                } else {
-                    Set<String> keySet = res.get(0).keySet();
-                    List<String> keyList = new ArrayList(keySet);
-                    List<String> valueStrList = new ArrayList<>();
-                    res.forEach(rowMap -> {
-                        List<String> valueList = new ArrayList<>();
-                        keyList.forEach(key -> {
-                            valueList.add(String.valueOf(rowMap.get(key)));
-                        });
-                        String valueStr = "(" + String.join(",", valueList) + ")";
-                        valueStrList.add(valueStr);
-                    });
-                    appLogger.info("insert into " + destTable + "(" + String.join(",", keyList) + ") values(" + String.join(",", valueStrList) + ")");
-                    destJtm.execute("insert into " + destTable + "(" + String.join(",", keyList) + ") values(" + String.join(",", valueStrList) + ")");
-                }
+                DataTransferHandler dataTransferHandler = new DataTransferHandler(destJtm, destTable);
+                sourceJtm.query("select * from " + sourceTable, dataTransferHandler);
+                dataTransferHandler.saveRest();
                 appLogger.info("Load data from " + sourceTable + " to " + destTable + " complete");
             }
             appLogger.info("Dataloader job is done");
