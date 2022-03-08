@@ -32,6 +32,7 @@ public class DataloaderJob implements Job {
             for (int i = 0; i < sourceTables.size(); i++) {
                 String sourceTable = sourceTables.get(i);
                 String destTable = destTables.get(i);
+                appLogger.info("Being to load data from " + sourceTable);
                 /*
                  * id name age
                  * 1  John  10
@@ -56,6 +57,7 @@ public class DataloaderJob implements Job {
                     appLogger.info("insert into " + destTable + "(" + String.join(",", keyList) + ") values(" + String.join(",", valueStrList) + ")");
                     destJtm.execute("insert into " + destTable + "(" + String.join(",", keyList) + ") values(" + String.join(",", valueStrList) + ")");
                 }
+                appLogger.info("Load data from " + sourceTable + " to " + destTable + " complete");
             }
             appLogger.info("Dataloader job is done");
         } catch (Exception e) {

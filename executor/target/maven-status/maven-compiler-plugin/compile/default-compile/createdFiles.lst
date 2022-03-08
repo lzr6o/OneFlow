@@ -1,3 +1,4 @@
+com/oc/oneflow/executor/job/DataloaderJob.class
 com/oc/oneflow/executor/job/ScriptJob.class
 com/oc/oneflow/executor/service/impl/HiveServiceImpl.class
 com/oc/oneflow/executor/job/HiveJob.class

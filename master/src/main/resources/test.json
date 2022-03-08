@@ -4,6 +4,13 @@
   "dataSources": [
     {
       "name": "hive"
+    },
+    {
+      "url": "jdbc:mysql://localhost:3306/test",
+      "username": "root",
+      "password": "sasa",
+      "driver": "com.mysql.jdbc.Driver",
+      "name": "mysql"
     }
   ],
   "tasks": [

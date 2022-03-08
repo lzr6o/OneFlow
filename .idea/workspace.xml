@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3649afb3-f941-4377-bda3-10e3a6884c72" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/executor/src/main/java/com/oc/oneflow/executor/job/DataloaderJob.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/executor/src/main/java/com/oc/oneflow/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/executor/src/main/java/com/oc/oneflow/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/executor/src/main/java/com/oc/oneflow/executor/executorJob/ExecutorJob.java" beforeDir="false" afterPath="$PROJECT_DIR$/executor/src/main/java/com/oc/oneflow/executor/executorJob/ExecutorJob.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/executor/src/main/java/com/oc/oneflow/executor/job/DataloaderJob.java" beforeDir="false" afterPath="$PROJECT_DIR$/executor/src/main/java/com/oc/oneflow/executor/job/DataloaderJob.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/src/main/resources/test.json" beforeDir="false" afterPath="$PROJECT_DIR$/master/src/main/resources/test.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +111,7 @@
       <workItem from="1646547742727" duration="7767000" />
       <workItem from="1646605321181" duration="12314000" />
       <workItem from="1646631047784" duration="4073000" />
-      <workItem from="1646709210523" duration="13043000" />
+      <workItem from="1646709210523" duration="13322000" />
     </task>
     <servers />
   </component>
