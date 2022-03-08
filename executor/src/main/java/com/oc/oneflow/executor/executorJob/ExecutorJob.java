@@ -1,6 +1,7 @@
 package com.oc.oneflow.executor.executorJob;
 
 import com.oc.oneflow.Application;
+import com.oc.oneflow.executor.job.HdfsJob;
 import com.oc.oneflow.executor.job.HiveJob;
 import com.oc.oneflow.executor.job.ScriptJob;
 import com.oc.oneflow.executor.job.SparkJob;
@@ -52,22 +53,27 @@ public class ExecutorJob implements Job {
             jobDescriptor.setName(stepVO.getStepName());
             paramMap.put("order", stepVO.getOrder());
             paramMap.put("stepName", stepVO.getStepName());
-            if (type.equals("hive")) {
+            if (type.equalsIgnoreCase("hive")) {
                 jobDescriptor.setJobClazz(HiveJob.class);
                 paramMap.put("path", stepVO.getPath());
                 paramMap.put("hiveParam", stepVO.getHiveParam());
-            } else if (type.equals("script")) {
+            } else if (type.equalsIgnoreCase("script")) {
                 jobDescriptor.setJobClazz(ScriptJob.class);
                 paramMap.put("path", stepVO.getPath());
                 paramMap.put("param", stepVO.getParam());
                 paramMap.put("mode", stepVO.getMode());
-            } else if (type.equals("spark")) {
+            } else if (type.equalsIgnoreCase("spark")) {
                 jobDescriptor.setJobClazz(SparkJob.class);
                 paramMap.put("path", stepVO.getPath());
                 paramMap.put("master", stepVO.getMaster());
                 paramMap.put("deployMode", stepVO.getDeployMode());
                 paramMap.put("className", stepVO.getClassName());
                 paramMap.put("sparkLogPath", stepVO.getSparkLogPath());
+            } else if (type.equalsIgnoreCase("HDFS")) {
+                jobDescriptor.setJobClazz(HdfsJob.class);
+                paramMap.put("mode", stepVO.getMode());
+                paramMap.put("source", stepVO.getSource());
+                paramMap.put("destination", stepVO.getDestination());
             }
             jobDescriptor.setDataMap(paramMap);
             JobDetail jobDetail = jobDescriptor.buildJobDetail();

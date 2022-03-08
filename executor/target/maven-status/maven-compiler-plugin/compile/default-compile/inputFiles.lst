@@ -7,4 +7,5 @@
 /Users/zr6oli/Desktop/OneFlow/executor/src/main/java/com/oc/oneflow/executor/executorJob/ExecutorJob.java
 /Users/zr6oli/Desktop/OneFlow/executor/src/main/java/com/oc/oneflow/executor/service/impl/HiveServiceImpl.java
 /Users/zr6oli/Desktop/OneFlow/executor/src/main/java/com/oc/oneflow/Application.java
+/Users/zr6oli/Desktop/OneFlow/executor/src/main/java/com/oc/oneflow/executor/job/HdfsJob.java
 /Users/zr6oli/Desktop/OneFlow/executor/src/main/java/com/oc/oneflow/executor/listener/OrderListener.java
