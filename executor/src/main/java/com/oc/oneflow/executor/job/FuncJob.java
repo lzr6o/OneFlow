@@ -25,7 +25,7 @@ public class FuncJob implements Job {
             appLogger.info("class: " + paramMap.getString("className"));
             appLogger.info("method: " + paramMap.getString("methodName"));
             Class classToLoad = Class.forName(paramMap.getString("className"), true, child);
-            Method method = classToLoad.getDeclaredMethod(paramMap.getString("methodName"));
+            Method method = classToLoad.getDeclaredMethod(paramMap.getString("methodName"), JobDataMap.class);
             method.setAccessible(true);
             Object instance = classToLoad.newInstance();
             method.invoke(instance, paramMap);
