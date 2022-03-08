@@ -1,3 +1,4 @@
+com/oc/oneflow/executor/job/ScriptJob.class
 com/oc/oneflow/executor/listener/OrderListener.class
 com/oc/oneflow/executor/config/HiveConfig.class
 com/oc/oneflow/executor/service/impl/HiveServiceImpl.class
@@ -8,3 +9,4 @@ com/oc/oneflow/executor/service/HiveService.class
 com/oc/oneflow/executor/executorJob/ExecutorJob$1.class
 com/oc/oneflow/executor/executorJob/ExecutorJob.class
 com/oc/oneflow/executor/config/SchedulerConfiguration.class
+com/oc/oneflow/executor/job/SparkJob.class

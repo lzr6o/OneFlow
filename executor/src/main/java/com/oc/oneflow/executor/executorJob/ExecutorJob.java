@@ -2,6 +2,8 @@ package com.oc.oneflow.executor.executorJob;
 
 import com.oc.oneflow.Application;
 import com.oc.oneflow.executor.job.HiveJob;
+import com.oc.oneflow.executor.job.ScriptJob;
+import com.oc.oneflow.executor.job.SparkJob;
 import com.oc.oneflow.executor.listener.OrderListener;
 import com.oc.oneflow.model.scheduler.JobDescriptor;
 import com.oc.oneflow.model.vo.StepVO;
@@ -48,16 +50,24 @@ public class ExecutorJob implements Job {
             jobDescriptor.setGroup(group);
             jobDescriptor.setName(taskName);
             jobDescriptor.setName(stepVO.getStepName());
+            paramMap.put("order", stepVO.getOrder());
+            paramMap.put("stepName", stepVO.getStepName());
             if (type.equals("hive")) {
                 jobDescriptor.setJobClazz(HiveJob.class);
-                paramMap.put("order", stepVO.getOrder());
-                paramMap.put("stepName", stepVO.getStepName());
                 paramMap.put("path", stepVO.getPath());
                 paramMap.put("hiveParam", stepVO.getHiveParam());
+            } else if (type.equals("script")) {
+                jobDescriptor.setJobClazz(ScriptJob.class);
+                paramMap.put("path", stepVO.getPath());
+                paramMap.put("param", stepVO.getParam());
+                paramMap.put("mode", stepVO.getMode());
             } else if (type.equals("spark")) {
-//                    jobDescriptor.setJobClazz(SparkJob.class);
-//                    paramMap.put("mainClass", stepVO.getPath());
-//                    paramMap.put("jarPath", stepVO.getHiveParam());
+                jobDescriptor.setJobClazz(SparkJob.class);
+                paramMap.put("path", stepVO.getPath());
+                paramMap.put("master", stepVO.getMaster());
+                paramMap.put("deployMode", stepVO.getDeployMode());
+                paramMap.put("className", stepVO.getClassName());
+//                paramMap.put("sparkLogPath", stepVO.getSparkLogPath());
             }
             jobDescriptor.setDataMap(paramMap);
             JobDetail jobDetail = jobDescriptor.buildJobDetail();

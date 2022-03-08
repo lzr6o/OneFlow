@@ -17,6 +17,7 @@ public class StepVO {
     private String master;
     private String deployMode;
     private String className;
+    private String sparkLogPath;
 
     // hdfs
     private String mode;
@@ -36,6 +37,14 @@ public class StepVO {
 
     // custom
     private String function;
+
+    public String getSparkLogPath() {
+        return sparkLogPath;
+    }
+
+    public void setSparkLogPath(String sparkLogPath) {
+        this.sparkLogPath = sparkLogPath;
+    }
 
     public String getOrder() {
         return order;
