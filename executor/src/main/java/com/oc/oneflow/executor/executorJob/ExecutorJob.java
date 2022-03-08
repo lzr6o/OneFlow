@@ -1,10 +1,7 @@
 package com.oc.oneflow.executor.executorJob;
 
 import com.oc.oneflow.Application;
-import com.oc.oneflow.executor.job.HdfsJob;
-import com.oc.oneflow.executor.job.HiveJob;
-import com.oc.oneflow.executor.job.ScriptJob;
-import com.oc.oneflow.executor.job.SparkJob;
+import com.oc.oneflow.executor.job.*;
 import com.oc.oneflow.executor.listener.OrderListener;
 import com.oc.oneflow.model.scheduler.JobDescriptor;
 import com.oc.oneflow.model.vo.StepVO;
@@ -74,6 +71,14 @@ public class ExecutorJob implements Job {
                 paramMap.put("mode", stepVO.getMode());
                 paramMap.put("source", stepVO.getSource());
                 paramMap.put("destination", stepVO.getDestination());
+            } else if (type.equalsIgnoreCase("dataloader")) {
+                jobDescriptor.setJobClazz(DataloaderJob.class);
+                paramMap.put("sourceDataSource", stepVO.getSourceDataSource());
+                paramMap.put("destDataSource", stepVO.getDestDataSource());
+                paramMap.put("sourcePath", stepVO.getSourcePath());
+                paramMap.put("sourceTables", stepVO.getSourceTables());
+                paramMap.put("destTables", stepVO.getDestTables());
+                paramMap.put("sourceCSV", stepVO.getSourceCSV());
             }
             jobDescriptor.setDataMap(paramMap);
             JobDetail jobDetail = jobDescriptor.buildJobDetail();

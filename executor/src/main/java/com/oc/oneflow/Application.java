@@ -10,9 +10,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.hadoop.hive.HiveTemplate;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
 import javax.annotation.PostConstruct;
 import java.io.FileNotFoundException;
+import java.sql.Driver;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +29,10 @@ public class Application {
 
     @Autowired
     private Scheduler scheduler;
+    @Autowired
+    private JdbcTemplate hiveJdbcTemplate;
+    @Autowired
+    private HiveTemplate hiveTemplate;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -36,6 +44,7 @@ public class Application {
         ConfigVO configVO = configUtil.getConfigVO();
         appLogger.info("Get ConfigVO");
         List<ConfigVO.DataSource> dataSources = configVO.getDataSources();
+
         appLogger.info("Get Data Source Config");
         configVO.getTasks().forEach(taskVO -> {
             String taskId = taskVO.getTaskId();
@@ -52,6 +61,8 @@ public class Application {
             paramMap.put("cron", cron);
             paramMap.put("taskVO", taskVO);
             paramMap.put("group", group);
+            paramMap.put("datasourceMap", getDataSourceMap(dataSources));
+
             jobDescriptor.setDataMap(paramMap);
             JobDetail executorJobDetail = jobDescriptor.buildJobDetail();
 
@@ -66,5 +77,30 @@ public class Application {
                 e.printStackTrace();
             }
         });
+    }
+
+    public Map<String, Object> getDataSourceMap(List<ConfigVO.DataSource> dataSources) {
+        Map<String, Object> dataSourceMap = new HashMap<>();
+        dataSources.forEach(dataSource -> {
+            if (dataSource.getName().equals("hive")) {
+                dataSourceMap.put("hive", hiveJdbcTemplate);
+                dataSourceMap.put("hiveTemplate", hiveTemplate);
+            } else {
+                SimpleDriverDataSource ds = new SimpleDriverDataSource();
+                Class<?> cls = null;
+                try {
+                    cls = Class.forName(dataSource.getDriver());
+                    ds.setDriverClass((Class<? extends Driver>) cls);
+                    ds.setUrl(dataSource.getUrl());
+                    ds.setUsername(dataSource.getUserName());
+                    ds.setPassword(dataSource.getPassword());
+                    JdbcTemplate jtm = new JdbcTemplate(ds);
+                    dataSourceMap.put(dataSource.getName(), jtm);
+                } catch (Exception e) {
+                    appLogger.error("Error", e);
+                }
+            }
+        });
+        return dataSourceMap;
     }
 }
