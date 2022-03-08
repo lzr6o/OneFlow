@@ -1,5 +1,6 @@
 /Users/zr6oli/Desktop/OneFlow/executor/src/main/java/com/oc/oneflow/executor/job/HiveJob.java
 /Users/zr6oli/Desktop/OneFlow/executor/src/main/java/com/oc/oneflow/executor/job/ScriptJob.java
+/Users/zr6oli/Desktop/OneFlow/executor/src/main/java/com/oc/oneflow/executor/job/FuncJob.java
 /Users/zr6oli/Desktop/OneFlow/executor/src/main/java/com/oc/oneflow/executor/service/impl/HiveServiceImpl.java
 /Users/zr6oli/Desktop/OneFlow/executor/src/main/java/com/oc/oneflow/executor/handler/DataTransferHandler.java
 /Users/zr6oli/Desktop/OneFlow/executor/src/main/java/com/oc/oneflow/executor/job/DataloaderJob.java

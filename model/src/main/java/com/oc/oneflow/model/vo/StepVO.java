@@ -35,8 +35,9 @@ public class StepVO {
     private List<String> destTables;
     private List<String> sourceCSV;
 
-    // custom
-    private String function;
+    // function
+    private String methodName;
+    private List<String> funcParamList;
 
     public String getSparkLogPath() {
         return sparkLogPath;
@@ -190,11 +191,19 @@ public class StepVO {
         this.sourceCSV = sourceCSV;
     }
 
-    public String getFunction() {
-        return function;
+    public String getMethodName() {
+        return methodName;
     }
 
-    public void setFunction(String function) {
-        this.function = function;
+    public void setMethodName(String methodName) {
+        this.methodName = methodName;
+    }
+
+    public List<String> getFuncParamList() {
+        return funcParamList;
+    }
+
+    public void setFuncParamList(List<String> funcParamList) {
+        this.funcParamList = funcParamList;
     }
 }

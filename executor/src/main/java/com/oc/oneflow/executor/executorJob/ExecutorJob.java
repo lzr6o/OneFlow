@@ -71,6 +71,17 @@ public class ExecutorJob implements Job {
                 paramMap.put("mode", stepVO.getMode());
                 paramMap.put("source", stepVO.getSource());
                 paramMap.put("destination", stepVO.getDestination());
+            } else if (type.equalsIgnoreCase("function")) {
+                jobDescriptor.setJobClazz(FuncJob.class);
+                paramMap.put("path", stepVO.getPath());
+                paramMap.put("className", stepVO.getClassName());
+                paramMap.put("methodName", stepVO.getMethodName());
+                Map<String, String> funcParamMap = new HashMap<>();
+                stepVO.getFuncParamList().forEach(str -> {
+                    String[] tempArr = str.split("=");
+                    funcParamMap.put(tempArr[0], tempArr[2]);
+                });
+                paramMap.put("funcParamMap", funcParamMap);
             } else if (type.equalsIgnoreCase("dataloader")) {
                 jobDescriptor.setJobClazz(DataloaderJob.class);
                 paramMap.put("sourceDataSource", stepVO.getSourceDataSource());
